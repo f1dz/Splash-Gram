@@ -3,15 +3,14 @@ package com.iteqno.splashgram.core.data.source.local.entity
 import android.location.Location
 import android.os.Parcelable
 import androidx.annotation.NonNull
-import androidx.room.ColumnInfo
-import androidx.room.Embedded
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+import androidx.room.*
 import com.google.gson.annotations.SerializedName
+import com.iteqno.splashgram.core.utils.Converter
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 @Entity(tableName = "photo")
+@TypeConverters(Converter::class)
 data class Photo(
 	@PrimaryKey
 	@NonNull
