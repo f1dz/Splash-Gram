@@ -31,9 +31,6 @@ val databaseModule = module {
 
 val networkModule = module {
     single {
-
-    }
-    single {
         val interceptor = Interceptor { chain ->
             var request = chain.request()
             val header: Headers = request.headers

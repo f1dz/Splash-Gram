@@ -15,7 +15,6 @@ object DataMapper {
                 description = it.description,
                 likedByUser = it.likedByUser,
                 urls = it.urls,
-                updatedAt = it.updatedAt,
                 downloads = it.downloads,
                 width = it.width,
                 location = it.location,
@@ -38,7 +37,6 @@ object DataMapper {
                 description = it.description,
                 likedByUser = it.likedByUser,
                 urls = mapUrlsEntityToDomain(it.urls),
-                updatedAt = it.updatedAt,
                 downloads = it.downloads,
                 width = it.width,
                 location = mapLocationEntityToDomain(it.location),
@@ -57,7 +55,6 @@ object DataMapper {
             description = it.description,
             likedByUser = it.likedByUser,
             urls = mapUrlsDomainToEntity(it.urls),
-            updatedAt = it.updatedAt,
             downloads = it.downloads,
             width = it.width,
             location = mapLocationDomainToEntity(it.location),
@@ -85,20 +82,20 @@ object DataMapper {
             full = input.full
         )
 
-    private fun mapLocationEntityToDomain(input: LocationEntity) =
+    private fun mapLocationEntityToDomain(input: LocationEntity?) =
         Location(
-            country = input.country,
-            city = input.city,
-            name = input.name,
-            title = input.title
+            country = input?.country,
+            city = input?.city,
+            name = input?.name,
+            title = input?.title
         )
 
-    private fun mapLocationDomainToEntity(input: Location) =
+    private fun mapLocationDomainToEntity(input: Location?) =
         LocationEntity(
-            country = input.country,
-            city = input.city,
-            name = input.name,
-            title = input.title
+            country = input?.country,
+            city = input?.city,
+            name = input?.name,
+            title = input?.title
         )
 
     private fun mapUserEntityToDomain(input: UserEntity) =

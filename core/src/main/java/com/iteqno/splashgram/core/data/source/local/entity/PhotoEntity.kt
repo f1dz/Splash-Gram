@@ -2,10 +2,7 @@ package com.iteqno.splashgram.core.data.source.local.entity
 
 import android.os.Parcelable
 import androidx.annotation.NonNull
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.PrimaryKey
-import androidx.room.TypeConverters
+import androidx.room.*
 import com.iteqno.splashgram.core.utils.Converter
 import kotlinx.android.parcel.Parcelize
 
@@ -25,16 +22,14 @@ data class PhotoEntity(
 	val createdAt: String,
 
 	@ColumnInfo(name = "description")
-	val description: String,
+	val description: String = "",
 
 	@ColumnInfo(name = "liked_by_user")
 	val likedByUser: Boolean = false,
 
-	@ColumnInfo(name = "urls")
+//	@ColumnInfo(name = "urls")
+	@Embedded(prefix = "urls_")
 	val urls: UrlsEntity,
-
-	@ColumnInfo(name = "updated_at")
-	val updatedAt: String,
 
 	@ColumnInfo(name = "downloads")
 	val downloads: Int = 0,
@@ -42,10 +37,12 @@ data class PhotoEntity(
 	@ColumnInfo(name = "width")
 	val width: Int = 0,
 
-	@ColumnInfo(name = "location")
-	val location: LocationEntity,
+//	@ColumnInfo(name = "location")
+	@Embedded(prefix = "location_")
+	var location: LocationEntity?,
 
-	@ColumnInfo(name = "user")
+//	@ColumnInfo(name = "user")
+	@Embedded(prefix = "user_")
 	val user: UserEntity,
 
 	@ColumnInfo(name = "views")

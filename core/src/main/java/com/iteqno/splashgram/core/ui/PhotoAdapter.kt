@@ -37,7 +37,7 @@ class PhotoAdapter : RecyclerView.Adapter<PhotoAdapter.ListViewHolder>(){
                 Glide.with(itemView.context)
                     .load(data.urls.small)
                     .into(iv_item_image)
-                tv_item_title.text = data.location.name
+                tv_item_title.text = data.location?.name
                 tv_item_subtitle.text = data.description
             }
         }

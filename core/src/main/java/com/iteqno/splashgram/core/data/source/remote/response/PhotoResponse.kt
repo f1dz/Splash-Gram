@@ -13,10 +13,10 @@ data class PhotoResponse(
     val color: String = "",
 
     @field:SerializedName("created_at")
-    val createdAt: String,
+    val createdAt: String = "",
 
     @field:SerializedName("description")
-    val description: String,
+    val description: String = "",
 
     @field:SerializedName("liked_by_user")
     val likedByUser: Boolean = false,
@@ -34,7 +34,7 @@ data class PhotoResponse(
     val width: Int = 0,
 
     @field:SerializedName("location")
-    val location: LocationEntity,
+    val location: LocationEntity?,
 
     @field:SerializedName("promoted_at")
     val promotedAt: String,

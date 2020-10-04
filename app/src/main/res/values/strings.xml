@@ -3,4 +3,6 @@
     <string name="title_home">Home</string>
     <string name="title_search">Search</string>
     <string name="title_loved">Loved</string>
+    <string name="something_wrong">Oops! Something wrong.</string>
+    <string name="no_data">No data found!</string>
 </resources>

@@ -8,14 +8,14 @@ import kotlinx.android.parcel.Parcelize
 data class LocationEntity(
 
     @field:SerializedName("country")
-    val country: String = "",
+    val country: String?,
 
     @field:SerializedName("city")
-    val city: String = "",
+    val city: String?,
 
     @field:SerializedName("name")
-    val name: String = "",
+    val name: String?,
 
     @field:SerializedName("title")
-    val title: String = ""
+    val title: String?
 ) : Parcelable

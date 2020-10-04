@@ -8,10 +8,10 @@ import kotlinx.android.parcel.Parcelize
 data class UserEntity(
 
     @field:SerializedName("last_name")
-    val lastName: String = "",
+    val lastName: String?,
 
     @field:SerializedName("bio")
-    val bio: String = "",
+    val bio: String?,
 
     @field:SerializedName("profile_image")
     val profileImage: ProfileImageEntity,
