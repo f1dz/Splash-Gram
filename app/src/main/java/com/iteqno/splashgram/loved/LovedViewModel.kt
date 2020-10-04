@@ -1,13 +1,13 @@
 package com.iteqno.splashgram.loved
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
+import com.iteqno.splashgram.core.domain.usecase.SplashGramUseCase
 
-class LovedViewModel : ViewModel() {
+class LovedViewModel(
+    private val useCase: SplashGramUseCase
+) : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is Loved Fragment"
-    }
-    val text: LiveData<String> = _text
+    val lovedPhotos = useCase.getLovedPhotos().asLiveData()
+
 }
