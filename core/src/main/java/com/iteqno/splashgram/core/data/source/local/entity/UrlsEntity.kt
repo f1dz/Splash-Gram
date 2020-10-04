@@ -1,30 +1,24 @@
 package com.iteqno.splashgram.core.data.source.local.entity
 
 import android.os.Parcelable
-import androidx.room.ColumnInfo
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class Urls(
+data class UrlsEntity(
 
-    @ColumnInfo(name = "small")
     @field:SerializedName("small")
-    val small: String? = null,
+    val small: String,
 
-    @ColumnInfo(name = "thumb")
     @field:SerializedName("thumb")
-    val thumb: String? = null,
+    val thumb: String,
 
-    @ColumnInfo(name = "raw")
     @field:SerializedName("raw")
-    val raw: String? = null,
+    val raw: String,
 
-    @ColumnInfo(name = "regular")
     @field:SerializedName("regular")
-    val regular: String? = null,
+    val regular: String,
 
-    @ColumnInfo(name = "full")
     @field:SerializedName("full")
-    val full: String? = null
+    val full: String
 ) : Parcelable

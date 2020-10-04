@@ -1,18 +1,18 @@
 package com.iteqno.splashgram.core.data.source.local
 
-import com.iteqno.splashgram.core.data.source.local.entity.Photo
+import com.iteqno.splashgram.core.data.source.local.entity.PhotoEntity
 import com.iteqno.splashgram.core.data.source.local.room.PhotoDao
 import kotlinx.coroutines.flow.Flow
 
 class LocalDataSource(private val photoDao: PhotoDao) {
 
-    fun getAllPhoto(): Flow<List<Photo>> = photoDao.getAllPhoto()
+    fun getAllPhoto(): Flow<List<PhotoEntity>> = photoDao.getAllPhoto()
 
-    fun getLovedPhotos(): Flow<List<Photo>> = photoDao.getLovedPhotos()
+    fun getLovedPhotos(): Flow<List<PhotoEntity>> = photoDao.getLovedPhotos()
 
-    suspend fun insertPhoto(photoList: List<Photo>) = photoDao.insertPhoto(photoList)
+    suspend fun insertPhoto(photoList: List<PhotoEntity>) = photoDao.insertPhoto(photoList)
 
-    fun setLovedPhoto(photo: Photo, newState: Boolean) {
+    fun setLovedPhoto(photo: PhotoEntity, newState: Boolean) {
         photo.isLoved = newState
         photoDao.updateLovedPhoto(photo)
     }

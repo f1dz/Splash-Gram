@@ -1,22 +1,18 @@
 package com.iteqno.splashgram.core.data.source.local.entity
 
 import android.os.Parcelable
-import androidx.room.ColumnInfo
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class ProfileImage(
+data class ProfileImageEntity(
 
-    @ColumnInfo(name = "small")
     @field:SerializedName("small")
-    val small: String? = null,
+    val small: String = "",
 
-    @ColumnInfo(name = "large")
     @field:SerializedName("large")
-    val large: String? = null,
+    val large: String = "",
 
-    @ColumnInfo(name = "medium")
     @field:SerializedName("medium")
-    val medium: String? = null
+    val medium: String = ""
 ) : Parcelable
