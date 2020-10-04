@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.iteqno.splashgram.core.R
 import com.iteqno.splashgram.core.domain.model.Photo
 import kotlinx.android.synthetic.main.item_list_photo.view.*
@@ -35,10 +36,17 @@ class PhotoAdapter : RecyclerView.Adapter<PhotoAdapter.ListViewHolder>(){
         fun bindItem(data: Photo){
             with(itemView) {
                 Glide.with(itemView.context)
-                    .load(data.urls.small)
+                    .load(data.urls.regular)
                     .into(iv_item_image)
-                tv_item_title.text = data.location?.name
-                tv_item_subtitle.text = data.description
+                Glide.with(itemView.context)
+                    .load(data.user.profileImage.large)
+                    .apply(RequestOptions.circleCropTransform())
+                    .into(iv_item_user)
+                tv_item_user_name.text = data.user.username
+                tv_item_location.text = data.location?.title
+                tv_item_liked_by.text = itemView.context.getString(R.string.text_liked_by, data.likes.toString())
+                tv_item_title.text = data.description
+//                tv_item_subtitle.text = data.description
             }
         }
 
