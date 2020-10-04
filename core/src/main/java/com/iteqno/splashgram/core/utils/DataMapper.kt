@@ -43,7 +43,8 @@ object DataMapper {
                 user = mapUserEntityToDomain(it.user),
                 views = it.views,
                 height = it.height,
-                likes = it.likes
+                likes = it.likes,
+                isLoved = it.isLoved
             )
         }
 

@@ -18,5 +18,5 @@ data class Photo(
     val views: Int,
     val height: Int,
     val likes: Int,
-    var isLoved: Boolean = false
+    var isLoved: Boolean
 ): Parcelable

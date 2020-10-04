@@ -27,7 +27,6 @@ data class PhotoEntity(
 	@ColumnInfo(name = "liked_by_user")
 	val likedByUser: Boolean = false,
 
-//	@ColumnInfo(name = "urls")
 	@Embedded(prefix = "urls_")
 	val urls: UrlsEntity,
 
@@ -37,11 +36,9 @@ data class PhotoEntity(
 	@ColumnInfo(name = "width")
 	val width: Int = 0,
 
-//	@ColumnInfo(name = "location")
 	@Embedded(prefix = "location_")
 	var location: LocationEntity?,
 
-//	@ColumnInfo(name = "user")
 	@Embedded(prefix = "user_")
 	val user: UserEntity,
 

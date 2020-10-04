@@ -8,6 +8,8 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.iteqno.splashgram.core.R
 import com.iteqno.splashgram.core.domain.model.Photo
+import com.iteqno.splashgram.core.utils.hide
+import com.iteqno.splashgram.core.utils.show
 import kotlinx.android.synthetic.main.item_list_photo.view.*
 
 class PhotoAdapter : RecyclerView.Adapter<PhotoAdapter.ListViewHolder>(){
@@ -42,11 +44,13 @@ class PhotoAdapter : RecyclerView.Adapter<PhotoAdapter.ListViewHolder>(){
                     .load(data.user.profileImage.large)
                     .apply(RequestOptions.circleCropTransform())
                     .into(iv_item_user)
-                tv_item_user_name.text = data.user.username
+                tv_item_user_name.text = data.user.name
                 tv_item_location.text = data.location?.title
                 tv_item_liked_by.text = itemView.context.getString(R.string.text_liked_by, data.likes.toString())
                 tv_item_title.text = data.description
-//                tv_item_subtitle.text = data.description
+
+                if(data.isLoved) iv_item_loved.show()
+                else iv_item_loved.hide()
             }
         }
 

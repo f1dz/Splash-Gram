@@ -5,4 +5,6 @@
     <string name="title_loved">Loved</string>
     <string name="something_wrong">Oops! Something wrong.</string>
     <string name="no_data">No data found!</string>
+    <string name="you_loved">You loved the photo</string>
+    <string name="you_unloved">You unloved the photo :(</string>
 </resources>
