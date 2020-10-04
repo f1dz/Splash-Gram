@@ -1,4 +1,4 @@
-package com.iteqno.splashgram.ui.loved
+package com.iteqno.splashgram.loved
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

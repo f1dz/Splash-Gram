@@ -1,4 +1,4 @@
-package com.iteqno.splashgram.ui.search
+package com.iteqno.splashgram.search
 
 import android.os.Bundle
 import android.view.LayoutInflater
