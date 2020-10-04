@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.iteqno.splashgram.ui.home.HomeFragment"
+        android:name="com.iteqno.splashgram.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_search"
-        android:name="com.iteqno.splashgram.ui.search.SearchFragment"
+        android:name="com.iteqno.splashgram.search.SearchFragment"
         android:label="@string/title_search"
         tools:layout="@layout/fragment_search" />
 
     <fragment
         android:id="@+id/navigation_loved"
-        android:name="com.iteqno.splashgram.ui.loved.LovedFragment"
+        android:name="com.iteqno.splashgram.loved.LovedFragment"
         android:label="@string/title_loved"
         tools:layout="@layout/fragment_loved" />
 </navigation>

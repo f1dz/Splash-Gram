@@ -1,13 +1,13 @@
-package com.iteqno.splashgram.ui.search
+package com.iteqno.splashgram.home
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class SearchViewModel : ViewModel() {
+class HomeViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is Search Fragment"
+        value = "This is home Fragment"
     }
     val text: LiveData<String> = _text
 }
