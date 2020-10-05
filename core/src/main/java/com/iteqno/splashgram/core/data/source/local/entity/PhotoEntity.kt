@@ -22,7 +22,7 @@ data class PhotoEntity(
 	val createdAt: String,
 
 	@ColumnInfo(name = "description")
-	val description: String = "",
+	val description: String? = "",
 
 	@ColumnInfo(name = "liked_by_user")
 	val likedByUser: Boolean = false,

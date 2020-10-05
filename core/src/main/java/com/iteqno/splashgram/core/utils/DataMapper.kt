@@ -21,7 +21,8 @@ object DataMapper {
                 user = it.user,
                 views = it.views,
                 height = it.height,
-                likes = it.likes
+                likes = it.likes,
+                isLoved = false
             )
             photoList.add(photo)
         }

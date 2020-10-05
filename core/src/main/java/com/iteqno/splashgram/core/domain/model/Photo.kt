@@ -8,7 +8,7 @@ data class Photo(
     val id: String,
     val color: String,
     val createdAt: String,
-    val description: String,
+    val description: String?,
     val likedByUser: Boolean = false,
     val urls: Urls,
     val downloads: Int,

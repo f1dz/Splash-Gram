@@ -16,7 +16,7 @@ data class PhotoResponse(
     val createdAt: String = "",
 
     @field:SerializedName("description")
-    val description: String = "",
+    val description: String? = "",
 
     @field:SerializedName("liked_by_user")
     val likedByUser: Boolean = false,
