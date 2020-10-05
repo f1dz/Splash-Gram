@@ -18,8 +18,9 @@
         tools:layout="@layout/fragment_search" />
 
     <fragment
+        app:moduleName="loved"
         android:id="@+id/navigation_loved"
-        android:name="com.iteqno.splashgram.loved.LovedFragment"
+        android:name="com.iteqno.splashgram.loved.LovedFeatureFragment"
         android:label="@string/title_loved"
-        tools:layout="@layout/fragment_loved" />
+        />
 </navigation>

@@ -7,4 +7,5 @@
     <string name="no_data">No data found!</string>
     <string name="you_loved">You loved the photo</string>
     <string name="you_unloved">You unloved the photo :(</string>
+    <string name="user_confirmation">User Confirmation</string>
 </resources>

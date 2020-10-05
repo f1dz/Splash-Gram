@@ -5,8 +5,8 @@ import androidx.lifecycle.asLiveData
 import com.iteqno.splashgram.core.domain.usecase.SplashGramUseCase
 
 class LovedViewModel(
-    private val useCase: SplashGramUseCase
-) : ViewModel() {
+    useCase: SplashGramUseCase
+) : ViewModel(){
 
     val lovedPhotos = useCase.getLovedPhotos().asLiveData()
 
