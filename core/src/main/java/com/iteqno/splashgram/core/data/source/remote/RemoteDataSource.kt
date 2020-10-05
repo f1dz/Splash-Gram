@@ -11,10 +11,10 @@ import kotlinx.coroutines.flow.flowOn
 
 class RemoteDataSource(private val apiService: ApiService) {
 
-    fun getAllPhoto(): Flow<ApiResponse<List<PhotoResponse>>> {
+    fun getAllPhoto(query: String = ""): Flow<ApiResponse<List<PhotoResponse>>> {
         return flow {
             try {
-                val response = apiService.getPhotosRandom()
+                val response = apiService.getPhotosRandom(query = query)
                 if(response.isNotEmpty()){
                     emit(ApiResponse.Success(response))
                 } else {
@@ -25,5 +25,18 @@ class RemoteDataSource(private val apiService: ApiService) {
                 Log.e("RemoteDataSource", e.toString())
             }
         }.flowOn(Dispatchers.IO)
+    }
+
+    fun searchPhoto(query: String): Flow<List<PhotoResponse>> {
+        return flow {
+            try {
+                val response = apiService.getPhotosRandom(query = query)
+                if(response.isNotEmpty()){
+                    emit(response)
+                }
+            } catch (e: Exception) {
+
+            }
+        }
     }
 }

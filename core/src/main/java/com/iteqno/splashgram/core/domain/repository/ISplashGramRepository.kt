@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface ISplashGramRepository {
 
-    fun getAllPhoto(): Flow<Resource<List<Photo>>>
+    fun getAllPhoto(query: String): Flow<Resource<List<Photo>>>
 
     fun getLovedPhotos(): Flow<List<Photo>>
 
