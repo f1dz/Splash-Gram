@@ -7,28 +7,29 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.iteqno.splashgram.R
 import com.iteqno.splashgram.core.ui.PhotoAdapter
+import com.iteqno.splashgram.core.utils.hide
+import com.iteqno.splashgram.core.utils.show
 import com.iteqno.splashgram.detail.DetailPhotoActivity
-import com.iteqno.splashgram.utils.hide
-import com.iteqno.splashgram.utils.show
 import kotlinx.android.synthetic.main.fragment_loved.*
 import org.koin.android.ext.android.inject
+import org.koin.core.context.loadKoinModules
 
-class LovedFragment : Fragment() {
+class LovedFeatureFragment : Fragment() {
 
     private val lovedViewModel: LovedViewModel by inject()
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_loved, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        loadKoinModules(lovedModule)
 
         if(activity != null) {
             val photoAdapter = PhotoAdapter()
@@ -50,4 +51,5 @@ class LovedFragment : Fragment() {
             }
         }
     }
+
 }
