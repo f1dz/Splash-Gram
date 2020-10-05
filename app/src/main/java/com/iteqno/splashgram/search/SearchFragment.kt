@@ -1,31 +1,97 @@
 package com.iteqno.splashgram.search
 
+import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.iteqno.splashgram.R
+import com.iteqno.splashgram.core.data.source.remote.network.ApiResponse
+import com.iteqno.splashgram.core.ui.PhotoAdapter
+import com.iteqno.splashgram.core.utils.DataMapper
+import com.iteqno.splashgram.core.utils.show
+import com.iteqno.splashgram.detail.DetailPhotoActivity
+import com.iteqno.splashgram.utils.hide
+import kotlinx.android.synthetic.main.fragment_search.*
+import kotlinx.android.synthetic.main.view_error.*
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.FlowPreview
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.launch
+import org.koin.android.ext.android.inject
 
+@ExperimentalCoroutinesApi
+@FlowPreview
 class SearchFragment : Fragment() {
 
-    private lateinit var searchViewModel: SearchViewModel
+    private val searchViewModel: SearchViewModel by inject()
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
-        searchViewModel =
-                ViewModelProviders.of(this).get(SearchViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_search, container, false)
-        val textView: TextView = root.findViewById(R.id.text_dashboard)
-        searchViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
-        return root
+        return inflater.inflate(R.layout.fragment_search, container, false)
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+        if(activity != null) {
+            val photoAdapter = PhotoAdapter()
+            photoAdapter.listener = {
+                val intent = Intent(activity, DetailPhotoActivity::class.java)
+                intent.putExtra(DetailPhotoActivity.EXTRA_DATA, it)
+                startActivity(intent)
+            }
+            ed_search.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                    lifecycleScope.launch {
+                        searchViewModel.queryChannel.send(s.toString())
+                        progress_bar.show()
+                    }
+                }
+
+                override fun afterTextChanged(p0: Editable?) {}
+
+            })
+
+            searchViewModel.searchResult().observe(viewLifecycleOwner, { result ->
+                if (result != null) {
+                    lifecycleScope.launch {
+                        when (val apiResponse = result.first()) {
+                            is ApiResponse.Success -> {
+                                progress_bar.hide()
+                                view_error.hide()
+                                photoAdapter.setData(DataMapper.mapResponseToDomain(apiResponse.data))
+                            }
+                            is ApiResponse.Error -> {
+                                progress_bar.hide()
+                                view_error.show()
+                                tv_error.text = apiResponse.errorMessage
+                            }
+                            is ApiResponse.Empty -> {
+                                progress_bar.hide()
+                                view_error.show()
+                                tv_error.text = getString(R.string.no_data)
+                            }
+                        }
+
+                    }
+                }
+            })
+            with(rv_photos) {
+                layoutManager = LinearLayoutManager(context)
+                setHasFixedSize(true)
+                adapter = photoAdapter
+            }
+        }
     }
 }

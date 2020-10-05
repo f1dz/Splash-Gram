@@ -49,6 +49,26 @@ object DataMapper {
             )
         }
 
+    fun mapResponseToDomain(input: List<PhotoResponse>): List<Photo> =
+        input.map {
+            Photo(
+                id = it.id,
+                color = it.color,
+                createdAt = it.createdAt,
+                description = it.description,
+                likedByUser = it.likedByUser,
+                urls = mapUrlsEntityToDomain(it.urls),
+                downloads = it.downloads,
+                width = it.width,
+                location = mapLocationEntityToDomain(it.location),
+                user = mapUserEntityToDomain(it.user),
+                views = it.views,
+                height = it.height,
+                likes = it.likes,
+                isLoved = false
+            )
+        }
+
     fun mapDomainToEntity(it: Photo) =
         PhotoEntity(
             id = it.id,

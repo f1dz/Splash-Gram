@@ -17,7 +17,7 @@ class PhotoRepository(
     private val appExecutors: AppExecutors
 ) : ISplashGramRepository{
 
-    override fun getAllPhoto(): Flow<Resource<List<Photo>>> =
+    override fun getAllPhoto(query: String): Flow<Resource<List<Photo>>> =
         object : NetworkBoundResource<List<Photo>, List<PhotoResponse>>(){
             override fun loadFromDB(): Flow<List<Photo>> {
                 return localDataSource.getAllPhoto().map { DataMapper.mapEntitiesToDomain(it) }
@@ -31,7 +31,7 @@ class PhotoRepository(
 
             override suspend fun saveCallRequest(data: List<PhotoResponse>) {
                 val photoList = DataMapper.mapResponseToEntities(data)
-                localDataSource.insertPhoto(photoList)
+                localDataSource.insertPhotos(photoList)
             }
         }.asFlow()
 

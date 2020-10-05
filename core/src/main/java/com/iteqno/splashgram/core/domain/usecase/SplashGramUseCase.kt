@@ -5,7 +5,7 @@ import com.iteqno.splashgram.core.domain.model.Photo
 import kotlinx.coroutines.flow.Flow
 
 interface SplashGramUseCase {
-    fun getAllPhoto(): Flow<Resource<List<Photo>>>
+    fun getAllPhoto(query: String = ""): Flow<Resource<List<Photo>>>
     fun getLovedPhotos(): Flow<List<Photo>>
     fun setLovedPhoto(photo: Photo, state: Boolean)
 }

@@ -14,7 +14,13 @@ interface PhotoDao {
     fun getLovedPhotos(): Flow<List<PhotoEntity>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertPhoto(photo: List<PhotoEntity>)
+    suspend fun insertPhotos(photo: List<PhotoEntity>)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertPhoto(photo: PhotoEntity)
+
+    @Query("SELECT COUNT(*) FROM photo WHERE id = :id")
+    suspend fun getPhoto(id: String): Int
 
     @Update
     fun updateLovedPhoto(photo: PhotoEntity)
