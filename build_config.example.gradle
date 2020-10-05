@@ -1,0 +1,6 @@
+android {
+    defaultConfig {
+        buildConfigField "String", "BASE_URL", "\"https://api.unsplash.com/\""
+        buildConfigField "String", "CLIENT_ID", "\"YOUR_ACCESS_KEY\""
+    }
+}

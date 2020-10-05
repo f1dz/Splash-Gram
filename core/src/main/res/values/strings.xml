@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="image_description">Image</string>
+    <string name="text_user_name">User Name</string>
+    <string name="text_location">Location</string>
+    <string name="text_liked_by">%1$s likes</string>
+</resources>
