@@ -27,16 +27,4 @@ class RemoteDataSource(private val apiService: ApiService) {
         }.flowOn(Dispatchers.IO)
     }
 
-    fun searchPhoto(query: String): Flow<List<PhotoResponse>> {
-        return flow {
-            try {
-                val response = apiService.getPhotosRandom(query = query)
-                if(response.isNotEmpty()){
-                    emit(response)
-                }
-            } catch (e: Exception) {
-
-            }
-        }
-    }
 }
