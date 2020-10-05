@@ -3,6 +3,7 @@ package com.iteqno.splashgram.search
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import com.iteqno.splashgram.core.data.source.remote.RemoteDataSource
+import com.iteqno.splashgram.core.data.source.remote.network.ApiResponse
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.channels.BroadcastChannel
@@ -15,13 +16,16 @@ class SearchViewModel(private val remoteDataSource: RemoteDataSource) : ViewMode
 
     val queryChannel = BroadcastChannel<String>(Channel.CONFLATED)
     fun searchResult() = queryChannel.asFlow()
-        .debounce(300)
+        .debounce(1000)
         .distinctUntilChanged()
         .filter {
             it.trim().isNotEmpty()
         }
         .mapLatest {
-            remoteDataSource.getAllPhoto(it)
+            if(it.length > 2) remoteDataSource.getAllPhoto(it)
+            else flow {
+                emit(ApiResponse.Empty)
+            }
         }
         .asLiveData()
 
