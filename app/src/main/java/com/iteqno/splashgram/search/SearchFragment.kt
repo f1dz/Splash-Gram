@@ -68,6 +68,7 @@ class SearchFragment : Fragment() {
                     lifecycleScope.launch {
                         when (val apiResponse = result.first()) {
                             is ApiResponse.Success -> {
+                                rv_photos.show()
                                 progress_bar.hide()
                                 view_error.hide()
                                 photoAdapter.setData(DataMapper.mapResponseToDomain(apiResponse.data))
@@ -75,11 +76,13 @@ class SearchFragment : Fragment() {
                             is ApiResponse.Error -> {
                                 progress_bar.hide()
                                 view_error.show()
+                                rv_photos.hide()
                                 tv_error.text = apiResponse.errorMessage
                             }
                             is ApiResponse.Empty -> {
                                 progress_bar.hide()
                                 view_error.show()
+                                rv_photos.hide()
                                 tv_error.text = getString(R.string.no_data)
                             }
                         }
