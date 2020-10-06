@@ -19,6 +19,17 @@ and then do build
 ## Unsplash API
 For demo tier we only got 50 request per hour and then the metrics will be updated every 20 minutes.
 
+## To do
+- [ ] Add download feature
+- [ ] Add Copyright
+- [ ] Ability to view portrait photo
+- [ ] Add set as home background
+- [ ] Explore user photo
+- [ ] Add alt description
+- [ ] Pull to refresh
+
+
 ## Disclaimer
 Please use this repository for learning purpose, any plagiarism activity will hurt yourself. 
+
 🔥🔥 **STOP PLAGIARISM!** 🔥🔥
