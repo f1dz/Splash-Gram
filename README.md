@@ -1,4 +1,8 @@
 ## Splash-Gram
+
+[![f1dz](https://circleci.com/gh/f1dz/Splash-Gram.svg?style=svg)](https://circleci.com/gh/f1dz/Splash-Gram)
+
+
 This project was my submission for MADE class at Dicoding Academy.
 You checkout the academy class here https://www.dicoding.com/academies/165
 
