@@ -23,3 +23,11 @@ dependencies {
 
     debugImplementation "com.squareup.leakcanary:leakcanary-android:2.4"
 }
+
+tasks.withType(Test) {
+    testLogging {
+        exceptionFormat "full"
+        events "started", "skipped", "passed", "failed"
+        showStandardStreams true
+    }
+}
