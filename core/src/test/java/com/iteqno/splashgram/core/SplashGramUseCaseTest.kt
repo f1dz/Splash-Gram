@@ -1,4 +1,4 @@
-package com.iteqno.splashgram.core.domain
+package com.iteqno.splashgram.core
 
 import com.iteqno.splashgram.core.domain.repository.ISplashGramRepository
 import com.iteqno.splashgram.core.domain.usecase.SplashGramInteractor
