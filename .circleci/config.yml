@@ -31,13 +31,13 @@ jobs:
           path: app/build/reports
           destination: reports
       - run:
-          name: Run Unit Tests
-          command: ./gradlew testDebugUnitTest
-      - store_test_results:
-          path: app/build/unit-test-results
-      - run:
           name: Run Tests
           command: ./gradlew lint test
+      - store_test_results:
+          path: app/build/test-results
+      - run:
+          name: Run Unit Tests
+          command: ./gradlew testDebugUnitTest
       - store_test_results:
           path: app/build/test-results
       - store_artifacts:  
