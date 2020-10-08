@@ -9,6 +9,8 @@ import com.iteqno.splashgram.core.data.source.remote.RemoteDataSource
 import com.iteqno.splashgram.core.data.source.remote.network.ApiService
 import com.iteqno.splashgram.core.domain.repository.ISplashGramRepository
 import com.iteqno.splashgram.core.utils.AppExecutors
+import net.sqlcipher.database.SQLiteDatabase
+import net.sqlcipher.database.SupportFactory
 import okhttp3.Headers
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -22,10 +24,14 @@ import java.util.concurrent.TimeUnit
 val databaseModule = module {
     factory { get<PhotoDatabase>().photoDao() }
     single {
+        val passphrase: ByteArray = SQLiteDatabase.getBytes("tahugimbal".toCharArray())
+        val factory = SupportFactory(passphrase)
         Room.databaseBuilder(
             androidContext(),
             PhotoDatabase::class.java, "SplashGram.db"
-        ).fallbackToDestructiveMigration().build()
+        ).fallbackToDestructiveMigration()
+            .openHelperFactory(factory)
+            .build()
     }
 }
 
