@@ -9,12 +9,13 @@ You checkout the academy class here https://www.dicoding.com/academies/165
 ## Before you go
 Before you are running the app, you should sign up to get an API ACCESS KEY on https://unsplash.com/developers and then rename file ```build_config.example.gradle``` into ```build_config.gradle```.
 
-Change ```ACCESS_KEY``` with yours
+Change ```ACCESS_KEY``` with yours and change ```YOUR_DB_SECRET``` as you wish to encrypt the database.
 ```gradle
 android {
     defaultConfig {
         buildConfigField "String", "BASE_URL", "\"https://api.unsplash.com/\""
         buildConfigField "String", "CLIENT_ID", "\"ACCESS_KEY\""
+        buildConfigField "String", "SECRET", "\"YOUR_DB_SECRET\""
     }
 }
 ```
