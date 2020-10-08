@@ -14,6 +14,7 @@ Change ```ACCESS_KEY``` with yours and change ```YOUR_DB_SECRET``` as you wish t
 android {
     defaultConfig {
         buildConfigField "String", "BASE_URL", "\"https://api.unsplash.com/\""
+        buildConfigField "String", "HOST_NAME", "\"api.unsplash.com\""
         buildConfigField "String", "CLIENT_ID", "\"ACCESS_KEY\""
         buildConfigField "String", "SECRET", "\"YOUR_DB_SECRET\""
     }
