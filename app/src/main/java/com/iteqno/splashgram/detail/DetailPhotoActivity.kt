@@ -91,6 +91,11 @@ class DetailPhotoActivity : AppCompatActivity() {
         }
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        this.finishAfterTransition()
+    }
+
     private fun toastState(lovedState: Boolean){
         if(lovedState){
             Toast.makeText(this@DetailPhotoActivity, getString(R.string.you_loved), Toast.LENGTH_SHORT).show()
