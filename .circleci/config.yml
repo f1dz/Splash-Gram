@@ -17,9 +17,6 @@ jobs:
           name: Rename Config
           command: mv build_config.example.gradle build_config.gradle
       - run:
-          name: Touch google-services.json
-          command: touch app/google-services.json
-      - run:
           name: Download Dependencies
           command: ./gradlew androidDependencies
       - save_cache:
