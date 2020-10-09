@@ -27,4 +27,20 @@ class RemoteDataSource(private val apiService: ApiService) {
         }.flowOn(Dispatchers.IO)
     }
 
+    fun getUserPhotos(user: String): Flow<ApiResponse<List<PhotoResponse>>> {
+        return flow {
+            try {
+                val response = apiService.getUserPhotos(user)
+                if(response.isNotEmpty()){
+                    emit(ApiResponse.Success(response))
+                } else {
+                    emit(ApiResponse.Empty)
+                }
+            } catch (e: Exception) {
+                emit(ApiResponse.Error(e.toString()))
+                Log.e("RemoteDataSource", e.toString())
+            }
+        }.flowOn(Dispatchers.IO)
+    }
+
 }

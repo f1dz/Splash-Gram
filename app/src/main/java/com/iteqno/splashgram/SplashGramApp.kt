@@ -1,6 +1,6 @@
 package com.iteqno.splashgram
 
-import android.app.Application
+import com.google.android.play.core.splitcompat.SplitCompatApplication
 import com.iteqno.splashgram.core.di.databaseModule
 import com.iteqno.splashgram.core.di.networkModule
 import com.iteqno.splashgram.core.di.repositoryModule
@@ -15,7 +15,7 @@ import org.koin.core.logger.Level
 
 @FlowPreview
 @ExperimentalCoroutinesApi
-class SplashGramApp : Application() {
+class SplashGramApp : SplitCompatApplication() {
 
     override fun onCreate() {
         super.onCreate()

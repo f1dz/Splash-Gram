@@ -9,6 +9,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlinx.android.synthetic.main.activity_main.*
 
 @SuppressLint("InflateParams")
 class MainActivity : AppCompatActivity() {
@@ -31,5 +32,15 @@ class MainActivity : AppCompatActivity() {
         val inflater = LayoutInflater.from(this)
         val view = inflater.inflate(R.layout.custom_title, null)
         supportActionBar?.customView = view
+    }
+
+    override fun onBackPressed() {
+        if(isTaskRoot
+            && nav_host_fragment.childFragmentManager.backStackEntryCount == 0
+            && supportFragmentManager.backStackEntryCount == 0) {
+            finishAfterTransition()
+        } else {
+            super.onBackPressed()
+        }
     }
 }

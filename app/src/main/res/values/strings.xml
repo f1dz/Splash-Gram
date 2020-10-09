@@ -4,8 +4,9 @@
     <string name="title_search">Search</string>
     <string name="title_loved">Loved</string>
     <string name="something_wrong">Oops! Something wrong.</string>
-    <string name="no_data">No data found!</string>
+    <string name="no_data">You don\'t have favorite photos!</string>
     <string name="you_loved">You loved the photo</string>
     <string name="you_unloved">You unloved the photo :(</string>
     <string name="search">Search</string>
+    <string name="copyright">Copyright © %s on Unsplash</string>
 </resources>
