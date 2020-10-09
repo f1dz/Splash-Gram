@@ -9,6 +9,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlinx.android.synthetic.main.activity_main.*
 
 @SuppressLint("InflateParams")
 class MainActivity : AppCompatActivity() {
@@ -34,7 +35,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        super.onBackPressed()
-        this.finishAfterTransition()
+        if(isTaskRoot
+            && nav_host_fragment.childFragmentManager.backStackEntryCount == 0
+            && supportFragmentManager.backStackEntryCount == 0) {
+            finishAfterTransition()
+        } else {
+            super.onBackPressed()
+        }
     }
 }
