@@ -25,6 +25,10 @@ dependencies {
 
     implementation "com.facebook.shimmer:shimmer:$shimmer_version"
     implementation "com.airbnb.android:lottie:$lottie_version"
+
+    implementation platform('com.google.firebase:firebase-bom:25.12.0')
+    implementation 'com.google.firebase:firebase-crashlytics-ktx'
+    implementation 'com.google.firebase:firebase-analytics-ktx'
 }
 
 tasks.withType(Test) {
