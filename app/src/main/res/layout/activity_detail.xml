@@ -28,6 +28,21 @@
                 android:contentDescription="@string/image_description"
                 android:scaleType="centerCrop" />
 
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/detail_photo_placeholder"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:shimmer_auto_start="true">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#DDDDDD"
+                    android:contentDescription="@string/image_description"
+                    android:scaleType="centerCrop" />
+
+            </com.facebook.shimmer.ShimmerFrameLayout>
+
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
@@ -136,6 +151,33 @@
                 app:layout_constraintTop_toBottomOf="@+id/copyright"
                 app:spanCount="2"
                 tools:listitem="@layout/item_user_photos" />
+
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/progress_bar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="2dp"
+                app:shimmer_auto_start="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/copyright">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <include layout="@layout/item_user_photos_placeholder"/>
+                    <include layout="@layout/item_user_photos_placeholder"/>
+                    <include layout="@layout/item_user_photos_placeholder"/>
+                    <include layout="@layout/item_user_photos_placeholder"/>
+                    <include layout="@layout/item_user_photos_placeholder"/>
+                    <include layout="@layout/item_user_photos_placeholder"/>
+
+                </LinearLayout>
+
+            </com.facebook.shimmer.ShimmerFrameLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
