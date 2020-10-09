@@ -1,13 +1,19 @@
 package com.iteqno.splashgram.detail
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.GridLayoutManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.iteqno.splashgram.R
+import com.iteqno.splashgram.core.data.source.remote.network.ApiResponse
 import com.iteqno.splashgram.core.domain.model.Photo
+import com.iteqno.splashgram.core.ui.UserPhotoAdapter
+import com.iteqno.splashgram.core.utils.DataMapper
+import com.iteqno.splashgram.utils.SpacesItemDecoration
 import kotlinx.android.synthetic.main.activity_detail.*
 import org.koin.android.ext.android.inject
 
@@ -29,10 +35,12 @@ class DetailPhotoActivity : AppCompatActivity() {
 
     private fun showDetailPhoto(detailPhoto: Photo?) {
         detailPhoto?.let {
-            supportActionBar?.title = detailPhoto.location?.title
-            if(supportActionBar?.title == null){
-                supportActionBar?.title = getString(R.string.app_name)
-            }
+
+            showUserPhotos(it.user.username)
+
+            toolbar.title = it.user.name
+            copyright.text = getString(R.string.copyright, it.user.name)
+
             Glide.with(this@DetailPhotoActivity)
                 .load(it.urls.regular)
                 .into(iv_detail_photo)
@@ -54,6 +62,38 @@ class DetailPhotoActivity : AppCompatActivity() {
                 toastState(lovedState)
             }
         }
+    }
+
+    private fun showUserPhotos(user: String){
+
+        val photoAdapter = UserPhotoAdapter()
+
+        photoAdapter.listener = {
+            val intent = Intent(this, DetailPhotoActivity::class.java)
+            intent.putExtra(EXTRA_DATA, it)
+            startActivity(intent)
+            finish()
+        }
+
+        detailViewModel.getUserPhotos(user).observe(this, { result ->
+            if(result != null){
+                when (result) {
+                    is ApiResponse.Success -> photoAdapter.setData(DataMapper.mapResponseToDomain(result.data))
+                    is ApiResponse.Empty -> {}
+                    is ApiResponse.Error -> { Toast.makeText(this, result.errorMessage, Toast.LENGTH_SHORT).show() }
+                }
+            }
+        })
+        with(rv_user_photos) {
+            addItemDecoration(SpacesItemDecoration(4))
+            layoutManager = GridLayoutManager(this@DetailPhotoActivity, 2)
+            adapter = photoAdapter
+        }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        this.finishAfterTransition()
     }
 
     private fun toastState(lovedState: Boolean){

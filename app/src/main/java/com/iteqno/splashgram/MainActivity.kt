@@ -32,4 +32,9 @@ class MainActivity : AppCompatActivity() {
         val view = inflater.inflate(R.layout.custom_title, null)
         supportActionBar?.customView = view
     }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        this.finishAfterTransition()
+    }
 }
