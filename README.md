@@ -1,4 +1,4 @@
-## Splash-Gram
+# Splash-Gram
 
 [![f1dz](https://circleci.com/gh/f1dz/Splash-Gram.svg?style=svg)](https://circleci.com/gh/f1dz/Splash-Gram)
 
