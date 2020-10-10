@@ -29,6 +29,9 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.setDisplayShowCustomEnabled(true)
         supportActionBar?.setDisplayShowTitleEnabled(false)
 
+//        val str = "2020-10-08T06:14:57-04:00"
+//        val span = str.toTimeSpan(this)
+
         val inflater = LayoutInflater.from(this)
         val view = inflater.inflate(R.layout.custom_title, null)
         supportActionBar?.customView = view

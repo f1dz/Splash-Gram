@@ -20,6 +20,7 @@ import com.iteqno.splashgram.core.ui.UserPhotoAdapter
 import com.iteqno.splashgram.core.utils.DataMapper
 import com.iteqno.splashgram.core.utils.hide
 import com.iteqno.splashgram.core.utils.show
+import com.iteqno.splashgram.core.utils.toTimeSpan
 import com.iteqno.splashgram.utils.SpacesItemDecoration
 import kotlinx.android.synthetic.main.activity_detail.*
 import org.koin.android.ext.android.inject
@@ -83,6 +84,7 @@ class DetailPhotoActivity : AppCompatActivity() {
             tv_detail_location.text = it.location?.name
             tv_detail_description.text = it.description
             tv_detail_liked_by.text = getString(R.string.text_liked_by, it.likes.toString())
+            tv_detail_time.text = it.createdAt.toTimeSpan(this)
 
             var lovedState = detailPhoto.isLoved
             setLovedState(lovedState)
