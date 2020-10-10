@@ -27,10 +27,11 @@ For demo tier we only got 50 request per hour and then the metrics will be updat
 
 ## To do
 - [ ] Add download feature
-- [ ] Add Copyright
+- [x] Add Copyright
 - [ ] Ability to view portrait photo
 - [ ] Add set as home background
 - [ ] Explore user photo
+- [x] Photo suggestion from curerent user in detail
 - [ ] Add alt description
 - [ ] Pull to refresh
 
