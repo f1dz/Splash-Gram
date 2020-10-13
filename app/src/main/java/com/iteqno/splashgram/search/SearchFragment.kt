@@ -55,6 +55,8 @@ class SearchFragment : Fragment() {
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                     lifecycleScope.launch {
                         searchViewModel.queryChannel.send(s.toString())
+                        rv_photos.hide()
+                        view_error.hide()
                         progress_bar.show()
                     }
                 }
@@ -77,7 +79,7 @@ class SearchFragment : Fragment() {
                                 progress_bar.hide()
                                 view_error.show()
                                 rv_photos.hide()
-                                tv_error.text = apiResponse.errorMessage
+                                tv_error.text = getString(R.string.no_photos_found)
                             }
                             is ApiResponse.Empty -> {
                                 progress_bar.hide()
