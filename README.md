@@ -4,7 +4,7 @@
 
 
 This project was my submission for MADE class at Dicoding Academy.
-You checkout the academy class here https://www.dicoding.com/academies/165
+You can checkout the academy class here https://www.dicoding.com/academies/165
 
 ## Before you go
 Before you are running the app, you should sign up to get an API ACCESS KEY on https://unsplash.com/developers and then rename file ```build_config.example.gradle``` into ```build_config.gradle```.
